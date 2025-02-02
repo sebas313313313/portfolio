@@ -62,38 +62,45 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Info */}
-          <div className="bg-gray-900/50 p-8 rounded-2xl backdrop-blur-sm">
-            <h3 className="text-xl font-semibold text-white mb-6">
-              Información de Contacto
-            </h3>
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-2xl font-bold text-white mb-4">
+                ¡Trabajemos juntos!
+              </h3>
+              <p className="text-gray-400">
+                Estoy disponible para proyectos freelance, colaboraciones y
+                oportunidades laborales. No dudes en contactarme.
+              </p>
+            </div>
+
             <div className="space-y-4">
               <a
                 href="mailto:potoslipig8@gmail.com"
-                className="flex items-center space-x-3 text-gray-300 hover:text-purple-400 transition-colors"
+                className="flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors"
               >
                 <EnvelopeIcon className="w-5 h-5" />
                 <span>potoslipig8@gmail.com</span>
               </a>
-              <div className="flex space-x-4">
-                <a
-                  href="https://github.com/sebas313313313"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-purple-400 transition-colors"
-                >
-                  <GitHubIcon className="w-6 h-6" />
-                </a>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-purple-400 transition-colors"
-                >
-                  <LinkedInIcon className="w-6 h-6" />
-                </a>
-              </div>
+              <a
+                href="https://github.com/sebas313313313"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors"
+              >
+                <GitHubIcon className="w-5 h-5" />
+                <span>GitHub</span>
+              </a>
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors"
+              >
+                <LinkedInIcon className="w-5 h-5" />
+                <span>LinkedIn</span>
+              </a>
             </div>
           </div>
 
@@ -117,7 +124,7 @@ const Contact = () => {
               </div>
               <div>
                 <label htmlFor="from_email" className="block text-sm font-medium text-gray-300 mb-2">
-                  Email
+                  Correo electrónico
                 </label>
                 <input
                   type="email"
