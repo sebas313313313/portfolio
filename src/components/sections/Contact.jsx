@@ -1,28 +1,54 @@
-"use client";
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import { SplitText } from "../animations/SplitText";
 import { BackgroundGradient } from "../ui/BackgroundGradient";
 import { EnvelopeIcon, GitHubIcon, LinkedInIcon } from "../ui/Icons";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
+    name: '',
+    email: '',
+    message: ''
   });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Aquí puedes agregar la lógica para enviar el formulario
-    console.log(formData);
-  };
+  const [status, setStatus] = useState({ type: '', message: '' });
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus({ type: 'loading', message: 'Enviando...' });
+
+    try {
+      await emailjs.send(
+        'service_7inu4sb',
+        'template_kg5ir0p',
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_name: 'Sebastian',
+          to_email: 'potoslipig8@gmail.com'
+        },
+        'bX36MolOlDhV6QsdG'
+      );
+
+      setStatus({
+        type: 'success',
+        message: '¡Mensaje enviado con éxito!'
+      });
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      setStatus({
+        type: 'error',
+        message: 'Hubo un error al enviar el mensaje. Por favor, intenta de nuevo.'
+      });
+    }
   };
 
   return (
@@ -161,10 +187,24 @@ const Contact = () => {
                 </div>
                 <button
                   type="submit"
+                  disabled={status.type === 'loading'}
                   className="w-full rounded-full bg-gradient-to-r from-purple-600 to-blue-500 px-4 py-2.5 text-sm font-semibold text-white hover:from-purple-500 hover:to-blue-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-black"
                 >
-                  Enviar mensaje
+                  {status.type === 'loading' ? 'Enviando...' : 'Enviar mensaje'}
                 </button>
+                {status.message && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className={`text-center p-3 rounded-lg ${
+                      status.type === 'success' ? 'bg-green-600/20 text-green-400' : 
+                      status.type === 'error' ? 'bg-red-600/20 text-red-400' : 
+                      'bg-gray-600/20 text-gray-400'
+                    }`}
+                  >
+                    {status.message}
+                  </motion.div>
+                )}
               </form>
             </BackgroundGradient>
           </motion.div>
