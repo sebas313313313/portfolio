@@ -26,21 +26,30 @@ const Contact = () => {
     e.preventDefault();
     setStatus({ type: 'loading', message: 'Enviando...' });
 
+    const templateParams = {
+      from_name: formData.from_name,
+      from_email: formData.from_email,
+      message: formData.message,
+      to_name: 'Sebastian',
+      to_email: 'potoslipig8@gmail.com'
+    };
+
+    console.log('Enviando email con parámetros:', {
+      serviceId: 'service_7inu4sb',
+      templateId: 'template_kg5ir0p',
+      templateParams,
+      publicKey: 'bX36MolOlDhV6QsdG'
+    });
+
     try {
       const result = await emailjs.send(
         'service_7inu4sb',
         'template_kg5ir0p',
-        {
-          from_name: formData.from_name,
-          from_email: formData.from_email,
-          message: formData.message,
-          to_name: 'Sebastian',
-          to_email: 'potoslipig8@gmail.com'
-        },
+        templateParams,
         'bX36MolOlDhV6QsdG'
       );
 
-      console.log('SUCCESS!', result.text);
+      console.log('SUCCESS!', result);
       setStatus({
         type: 'success',
         message: '¡Mensaje enviado con éxito!'
@@ -48,9 +57,17 @@ const Contact = () => {
       setFormData({ from_name: '', from_email: '', message: '' });
     } catch (error) {
       console.error('FAILED...', error);
+      let errorMessage = 'Hubo un error al enviar el mensaje. ';
+      
+      if (error.text) {
+        errorMessage += error.text;
+      } else if (error.message) {
+        errorMessage += error.message;
+      }
+      
       setStatus({
         type: 'error',
-        message: 'Hubo un error al enviar el mensaje. Por favor, intenta de nuevo.'
+        message: errorMessage
       });
     }
   };
