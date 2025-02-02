@@ -35,7 +35,7 @@ const Contact = () => {
     };
 
     console.log('Enviando email con parámetros:', {
-      serviceId: 'service_7inu4sb',
+      serviceId: 'service_xdi9sf5',
       templateId: 'template_kg5ir0p',
       templateParams,
       publicKey: 'bX36MolOlDhV6QsdG'
@@ -43,7 +43,7 @@ const Contact = () => {
 
     try {
       const result = await emailjs.send(
-        'service_7inu4sb',
+        'service_xdi9sf5',
         'template_kg5ir0p',
         templateParams,
         'bX36MolOlDhV6QsdG'
