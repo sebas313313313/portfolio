@@ -1,12 +1,13 @@
 import React from 'react';
 import SpotlightCard from '../cards/SpotlightCard';
+import { SplitText } from "../animations/SplitText";
 
 // Esta estructura se actualizará con tus proyectos reales
 const projects = [
   {
     title: "Proyecto 1",
     description: "Descripción del proyecto 1. Tecnologías utilizadas y detalles importantes.",
-    image: "/project1.jpg",
+    image: "https://via.placeholder.com/400x300",
     demoLink: "#",
     githubLink: "#",
     tags: ["React", "Node.js", "MongoDB"]
@@ -14,7 +15,7 @@ const projects = [
   {
     title: "Proyecto 2",
     description: "Descripción del proyecto 2. Tecnologías utilizadas y detalles importantes.",
-    image: "/project2.jpg",
+    image: "https://via.placeholder.com/400x300",
     demoLink: "#",
     githubLink: "#",
     tags: ["Next.js", "Tailwind", "Firebase"]
@@ -22,7 +23,7 @@ const projects = [
   {
     title: "Proyecto 3",
     description: "Descripción del proyecto 3. Tecnologías utilizadas y detalles importantes.",
-    image: "/project3.jpg",
+    image: "https://via.placeholder.com/400x300",
     demoLink: "#",
     githubLink: "#",
     tags: ["React Native", "Express", "PostgreSQL"]
