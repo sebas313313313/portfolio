@@ -24,29 +24,34 @@ const Contact = () => {
     e.preventDefault();
     setStatus({ type: 'loading', message: 'Enviando...' });
 
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      message: formData.message,
+      to_name: 'Sebastian',
+      to_email: 'potoslipig8@gmail.com'
+    };
+
     try {
-      await emailjs.send(
+      console.log('Enviando email con params:', templateParams);
+      const response = await emailjs.send(
         'service_7inu4sb',
         'template_kg5ir0p',
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_name: 'Sebastian',
-          to_email: 'potoslipig8@gmail.com'
-        },
+        templateParams,
         'bX36MolOlDhV6QsdG'
       );
-
+      
+      console.log('Email enviado:', response);
       setStatus({
         type: 'success',
         message: '¡Mensaje enviado con éxito!'
       });
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
+      console.error('Error al enviar email:', error);
       setStatus({
         type: 'error',
-        message: 'Hubo un error al enviar el mensaje. Por favor, intenta de nuevo.'
+        message: `Error: ${error.message || 'Hubo un problema al enviar el mensaje'}`
       });
     }
   };
