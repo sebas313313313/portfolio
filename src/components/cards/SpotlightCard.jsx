@@ -1,64 +1,55 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef, useState } from 'react';
+import { cn } from '../../utils/cn';
 
 const SpotlightCard = ({ 
-  title = '', 
-  description = '', 
-  image = '', 
-  demoLink = '#', 
-  githubLink = '#', 
-  tags = [] 
+  children, 
+  className = "", 
+  spotlightColor = "rgba(0, 229, 255, 0.2)"
 }) => {
+  const divRef = useRef(null);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [opacity, setOpacity] = useState(0);
+
+  const handleMouseMove = (e) => {
+    if (!divRef.current) return;
+
+    const div = divRef.current;
+    const rect = div.getBoundingClientRect();
+
+    setPosition({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
+  const handleMouseEnter = () => {
+    setOpacity(1);
+  };
+
+  const handleMouseLeave = () => {
+    setOpacity(0);
+  };
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="group relative bg-gray-900/50 rounded-2xl p-6 backdrop-blur-sm border border-gray-800 hover:border-purple-500/50 transition-all duration-300"
-    >
-      <div className="aspect-video w-full mb-6 overflow-hidden rounded-lg">
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
-        />
-      </div>
-
-      <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
-      <p className="text-gray-400 mb-4 text-sm">{description}</p>
-
-      {tags && tags.length > 0 && (
-        <div className="flex flex-wrap gap-2 mb-6">
-          {tags.map((tag, index) => (
-            <span
-              key={index}
-              className="px-3 py-1 text-xs font-medium text-purple-300 bg-purple-900/30 rounded-full"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
+    <div
+      ref={divRef}
+      className={cn(
+        "relative w-full overflow-hidden rounded-xl border border-white/10 bg-gradient-to-b from-neutral-900 to-neutral-950 shadow-2xl",
+        className
       )}
-
-      <div className="flex gap-4">
-        <a
-          href={demoLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex-1 px-4 py-2 text-sm font-medium text-white bg-purple-600 rounded-lg hover:bg-purple-700 transition-colors text-center"
-        >
-          Ver Demo
-        </a>
-        <a
-          href={githubLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex-1 px-4 py-2 text-sm font-medium text-purple-300 border border-purple-600/50 rounded-lg hover:bg-purple-600/20 transition-colors text-center"
-        >
-          Ver Código
-        </a>
-      </div>
-    </motion.div>
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div
+        className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
+        style={{
+          opacity,
+          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 40%)`,
+        }}
+      />
+      {children}
+    </div>
   );
 };
 
