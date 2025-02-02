@@ -7,7 +7,7 @@ const projects = [
   {
     title: "Proyecto 1",
     description: "Descripción del proyecto 1. Tecnologías utilizadas y detalles importantes.",
-    image: "https://via.placeholder.com/400x300",
+    image: "https://placehold.co/400x300",
     demoLink: "#",
     githubLink: "#",
     tags: ["React", "Node.js", "MongoDB"]
@@ -15,7 +15,7 @@ const projects = [
   {
     title: "Proyecto 2",
     description: "Descripción del proyecto 2. Tecnologías utilizadas y detalles importantes.",
-    image: "https://via.placeholder.com/400x300",
+    image: "https://placehold.co/400x300",
     demoLink: "#",
     githubLink: "#",
     tags: ["Next.js", "Tailwind", "Firebase"]
@@ -23,7 +23,7 @@ const projects = [
   {
     title: "Proyecto 3",
     description: "Descripción del proyecto 3. Tecnologías utilizadas y detalles importantes.",
-    image: "https://via.placeholder.com/400x300",
+    image: "https://placehold.co/400x300",
     demoLink: "#",
     githubLink: "#",
     tags: ["React Native", "Express", "PostgreSQL"]

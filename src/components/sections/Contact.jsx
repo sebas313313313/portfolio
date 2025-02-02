@@ -27,10 +27,16 @@ const Contact = () => {
     setStatus({ type: 'loading', message: 'Enviando...' });
 
     try {
-      const result = await emailjs.sendForm(
+      const result = await emailjs.send(
         'service_7inu4sb',
         'template_kg5ir0p',
-        formRef.current,
+        {
+          from_name: formData.from_name,
+          from_email: formData.from_email,
+          message: formData.message,
+          to_name: 'Sebastian',
+          to_email: 'potoslipig8@gmail.com'
+        },
         'bX36MolOlDhV6QsdG'
       );
 
