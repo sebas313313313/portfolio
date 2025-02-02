@@ -1,7 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const SpotlightCard = ({ title, description, image, demoLink, githubLink, tags }) => {
+const SpotlightCard = ({ 
+  title = '', 
+  description = '', 
+  image = '', 
+  demoLink = '#', 
+  githubLink = '#', 
+  tags = [] 
+}) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -20,16 +27,18 @@ const SpotlightCard = ({ title, description, image, demoLink, githubLink, tags }
       <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
       <p className="text-gray-400 mb-4 text-sm">{description}</p>
 
-      <div className="flex flex-wrap gap-2 mb-6">
-        {tags.map((tag, index) => (
-          <span
-            key={index}
-            className="px-3 py-1 text-xs font-medium text-purple-300 bg-purple-900/30 rounded-full"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
+      {tags && tags.length > 0 && (
+        <div className="flex flex-wrap gap-2 mb-6">
+          {tags.map((tag, index) => (
+            <span
+              key={index}
+              className="px-3 py-1 text-xs font-medium text-purple-300 bg-purple-900/30 rounded-full"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
 
       <div className="flex gap-4">
         <a

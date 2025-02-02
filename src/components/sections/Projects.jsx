@@ -38,8 +38,16 @@ const Projects = () => {
           <SplitText text="Mis Proyectos" />
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {projects.map((project, index) => (
-            <SpotlightCard key={index} {...project} />
+          {projects && projects.map((project, index) => (
+            <SpotlightCard 
+              key={index}
+              title={project.title}
+              description={project.description}
+              image={project.image}
+              demoLink={project.demoLink}
+              githubLink={project.githubLink}
+              tags={project.tags}
+            />
           ))}
         </div>
       </div>
