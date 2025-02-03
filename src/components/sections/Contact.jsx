@@ -1,76 +1,74 @@
-import { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
+import SpotlightCard from '../cards/SpotlightCard';
+import { SplitText } from '../animations/SplitText';
 import emailjs from '@emailjs/browser';
-import { SplitText } from "../animations/SplitText";
-import { BackgroundGradient } from "../ui/BackgroundGradient";
-import { EnvelopeIcon, GitHubIcon, LinkedInIcon } from "../ui/Icons";
+import { EnvelopeIcon, GitHubIcon, LinkedInIcon, PhoneIcon, InstagramIcon } from "../ui/Icons";
+
+const SERVICE_ID = 'service_xdi9sf5';
+const TEMPLATE_ID = 'template_kg5lr0p';
+const PUBLIC_KEY = 'bX36MolOlDhV6QsdG';
 
 const Contact = () => {
-  const formRef = useRef();
-  const [formData, setFormData] = useState({
-    from_name: '',
-    from_email: '',
-    message: ''
-  });
-  const [status, setStatus] = useState({ type: '', message: '' });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+  const form = useRef();
+  const [status, setStatus] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus({ type: 'loading', message: 'Enviando...' });
-
-    const templateParams = {
-      from_name: formData.from_name,
-      from_email: formData.from_email,
-      message: formData.message,
-      to_name: 'Sebastian',
-      to_email: 'potoslipig8@gmail.com'
-    };
-
-    console.log('Enviando email con parámetros:', {
-      serviceId: 'service_xdi9sf5',
-      templateId: 'template_kg5ir0p',
-      templateParams,
-      publicKey: 'bX36MolOlDhV6QsdG'
-    });
-
+    
     try {
-      const result = await emailjs.send(
-        'service_xdi9sf5',
-        'template_kg5ir0p',
-        templateParams,
-        'bX36MolOlDhV6QsdG'
+      setStatus({ type: 'loading', message: 'Enviando...' });
+
+      const formData = new FormData(form.current);
+      const templateParams = {};
+      for (let [key, value] of formData.entries()) {
+        templateParams[key] = value;
+      }
+
+      const result = await emailjs.sendForm(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        form.current,
+        PUBLIC_KEY
       );
 
-      console.log('SUCCESS!', result);
-      setStatus({
-        type: 'success',
-        message: '¡Mensaje enviado con éxito!'
-      });
-      setFormData({ from_name: '', from_email: '', message: '' });
-    } catch (error) {
-      console.error('FAILED...', error);
-      let errorMessage = 'Hubo un error al enviar el mensaje. ';
-      
-      if (error.text) {
-        errorMessage += error.text;
-      } else if (error.message) {
-        errorMessage += error.message;
+      if (result.text === 'OK') {
+        setStatus({
+          type: 'success',
+          message: '¡Mensaje enviado con éxito! Me pondré en contacto contigo pronto.'
+        });
+        form.current.reset();
+      } else {
+        throw new Error('Error en la respuesta del servidor');
       }
+    } catch (error) {
+      console.error('Error detallado:', error);
       
+      let errorMessage = 'Hubo un error al enviar el mensaje. ';
+      if (error.text && error.text.includes('template ID not found')) {
+        errorMessage += 'Error en la configuración del servicio de correo. Por favor, contacta directamente a potoslipig8@gmail.com';
+      } else {
+        errorMessage += 'Por favor, intenta nuevamente más tarde.';
+      }
+
       setStatus({
         type: 'error',
         message: errorMessage
       });
     }
   };
+
+  const handleEmailClick = useCallback(() => {
+    window.location.href = 'mailto:potoslipig8@gmail.com';
+  }, []);
+
+  const handlePhoneClick = useCallback(() => {
+    window.location.href = 'tel:+573042862082';
+  }, []);
+
+  const handleSocialClick = useCallback((url) => {
+    window.open(url, '_blank');
+  }, []);
 
   return (
     <section id="contact" className="py-20 bg-black relative overflow-hidden">
@@ -92,72 +90,79 @@ const Contact = () => {
               <h3 className="text-2xl font-bold text-white mb-4">
                 ¡Trabajemos juntos!
               </h3>
-              <p className="text-gray-400">
+              <p className="text-gray-400 mb-6">
                 Estoy disponible para proyectos freelance, colaboraciones y
                 oportunidades laborales. No dudes en contactarme.
               </p>
-            </div>
 
-            <div className="space-y-4">
-              <a
-                href="mailto:potoslipig8@gmail.com"
-                className="flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors"
-              >
-                <EnvelopeIcon className="w-5 h-5" />
-                <span>potoslipig8@gmail.com</span>
-              </a>
-              <a
-                href="https://github.com/sebas313313313"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors"
-              >
-                <GitHubIcon className="w-5 h-5" />
-                <span>GitHub</span>
-              </a>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors"
-              >
-                <LinkedInIcon className="w-5 h-5" />
-                <span>LinkedIn</span>
-              </a>
+              <div className="space-y-3">
+                <button 
+                  onClick={handleEmailClick}
+                  className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors cursor-pointer"
+                >
+                  <EnvelopeIcon className="w-5 h-5" />
+                  <span>potoslipig8@gmail.com</span>
+                </button>
+
+                <button 
+                  onClick={handlePhoneClick}
+                  className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors cursor-pointer"
+                >
+                  <PhoneIcon className="w-5 h-5" />
+                  <span>+57 304 286 2082</span>
+                </button>
+              </div>
+
+              <div className="mt-6 flex gap-4">
+                <button 
+                  onClick={() => handleSocialClick('https://github.com/sebas313313313')}
+                  className="p-2 text-gray-300 hover:text-blue-400 transition-colors cursor-pointer"
+                >
+                  <GitHubIcon className="w-6 h-6" />
+                </button>
+
+                <button 
+                  onClick={() => handleSocialClick('https://www.instagram.com/ww.sebass/')}
+                  className="p-2 text-gray-300 hover:text-blue-400 transition-colors cursor-pointer"
+                >
+                  <InstagramIcon className="w-6 h-6" />
+                </button>
+
+                <button 
+                  onClick={() => handleSocialClick('https://www.linkedin.com/in/sebastian-campo-069356303')}
+                  className="p-2 text-gray-300 hover:text-blue-400 transition-colors cursor-pointer"
+                >
+                  <LinkedInIcon className="w-6 h-6" />
+                </button>
+              </div>
             </div>
           </div>
 
           {/* Contact Form */}
           <div className="bg-gray-900/50 p-8 rounded-2xl backdrop-blur-sm">
-            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+            <form ref={form} onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="from_name" className="block text-sm font-medium text-gray-300 mb-2">
                   Nombre
                 </label>
                 <input
                   type="text"
-                  id="from_name"
                   name="from_name"
-                  value={formData.from_name}
-                  onChange={handleChange}
-                  required
+                  id="from_name"
                   className="w-full px-4 py-2 rounded-lg bg-black/50 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
-                  placeholder="Tu nombre"
+                  required
                 />
               </div>
               <div>
                 <label htmlFor="from_email" className="block text-sm font-medium text-gray-300 mb-2">
-                  Correo electrónico
+                  Email
                 </label>
                 <input
                   type="email"
-                  id="from_email"
                   name="from_email"
-                  value={formData.from_email}
-                  onChange={handleChange}
-                  required
+                  id="from_email"
                   className="w-full px-4 py-2 rounded-lg bg-black/50 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
-                  placeholder="tu@email.com"
+                  required
                 />
               </div>
               <div>
@@ -165,25 +170,30 @@ const Contact = () => {
                   Mensaje
                 </label>
                 <textarea
-                  id="message"
                   name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
+                  id="message"
                   rows="4"
-                  className="w-full px-4 py-2 rounded-lg bg-black/50 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
-                  placeholder="Tu mensaje aquí..."
+                  className="w-full px-4 py-2 rounded-lg bg-black/50 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none"
+                  required
                 />
               </div>
-              <button
-                type="submit"
-                disabled={status.type === 'loading'}
-                className="w-full py-3 px-4 bg-gradient-to-r from-purple-600 to-blue-500 text-white font-medium rounded-lg hover:from-purple-700 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-900 disabled:opacity-50 transition-all duration-200"
-              >
-                {status.type === 'loading' ? 'Enviando...' : 'Enviar mensaje'}
-              </button>
+              
+              <input type="hidden" name="to_name" value="Sebastian" />
+              <input type="hidden" name="to_email" value="potoslipig8@gmail.com" />
+              
+              <div>
+                <motion.button
+                  type="submit"
+                  className="w-full py-3 px-4 bg-gradient-to-r from-purple-600 to-blue-500 text-white font-medium rounded-lg hover:from-purple-700 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-900 disabled:opacity-50 transition-all duration-200"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  disabled={status?.type === 'loading'}
+                >
+                  {status?.type === 'loading' ? 'Enviando...' : 'Enviar mensaje'}
+                </motion.button>
+              </div>
 
-              {status.message && (
+              {status && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
