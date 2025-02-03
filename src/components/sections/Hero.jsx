@@ -80,7 +80,7 @@ const Hero = () => {
             >
               <p className="text-sm text-gray-500 mb-4">Tecnologías principales</p>
               <div className="flex flex-wrap gap-3">
-                {['React', 'Node.js', 'MongoDB', 'Express', 'JavaScript'].map((tech, index) => (
+                {['React', 'Node.js', 'MongoDB', 'Express', 'JavaScript', "php", "laravel"].map((tech, index) => (
                   <span
                     key={index}
                     className="px-4 py-2 rounded-full bg-gray-800 text-gray-300 text-sm hover:bg-gray-700 transition-colors"

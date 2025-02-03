@@ -63,24 +63,7 @@ const About = () => {
                   Tengo un gran interés por aprender sobre las últimas tecnologías y
                   prácticas en estas áreas.
                 </p>
-                <div className="flex space-x-4">
-                  <a
-                    href="https://github.com/sebas313313313"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-purple-400 hover:text-purple-300"
-                  >
-                    GitHub
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/in/sebastian-campo-069356303"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-purple-400 hover:text-purple-300"
-                  >
-                    LinkedIn
-                  </a>
-                </div>
+                
               </SpotlightCard>
             </motion.div>
 
