@@ -1,13 +1,15 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from 'react-i18next';
 
 const Navbar = () => {
-  const [language, setLanguage] = useState("es");
+  const { t, i18n } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleLanguage = () => {
-    setLanguage(prev => prev === "es" ? "en" : "es");
+    const newLang = i18n.language === 'es' ? 'en' : 'es';
+    i18n.changeLanguage(newLang);
   };
 
   const scrollToTop = () => {
@@ -35,16 +37,16 @@ const Navbar = () => {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
               <button onClick={scrollToTop} className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">
-                Home
+                {t('nav.home')}
               </button>
-              <NavLink href="#projects">Projects</NavLink>
-              <NavLink href="#about">About</NavLink>
-              <NavLink href="#contact">Contact</NavLink>
+              <NavLink href="#projects">{t('nav.projects')}</NavLink>
+              <NavLink href="#about">{t('nav.about')}</NavLink>
+              <NavLink href="#contact">{t('nav.contact')}</NavLink>
               <button
                 onClick={toggleLanguage}
                 className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
               >
-                {language.toUpperCase()}
+                {i18n.language.toUpperCase()}
               </button>
             </div>
           </div>
@@ -93,16 +95,16 @@ const Navbar = () => {
               }}
               className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
             >
-              Home
+              {t('nav.home')}
             </button>
-            <MobileNavLink href="#projects">Projects</MobileNavLink>
-            <MobileNavLink href="#about">About</MobileNavLink>
-            <MobileNavLink href="#contact">Contact</MobileNavLink>
+            <MobileNavLink href="#projects">{t('nav.projects')}</MobileNavLink>
+            <MobileNavLink href="#about">{t('nav.about')}</MobileNavLink>
+            <MobileNavLink href="#contact">{t('nav.contact')}</MobileNavLink>
             <button
               onClick={toggleLanguage}
               className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
             >
-              {language.toUpperCase()}
+              {i18n.language.toUpperCase()}
             </button>
           </div>
         </div>

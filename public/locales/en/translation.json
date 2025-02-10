@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Full Stack Developer",
+    "subtitle": "Creating unique and memorable web experiences",
+    "cta": {
+      "contact": "Contact Me",
+      "projects": "View Projects"
+    },
+    "tech": {
+      "title": "Core Technologies"
+    }
+  },
+  "about": {
+    "title": "About Me",
+    "name": "Sebastian Campo",
+    "role": "Software Analyst and Developer",
+    "description1": "Passionate about software development and cybersecurity, focusing on applying best security practices in the development lifecycle.",
+    "description2": "I have a strong interest in learning about the latest technologies and practices in these areas.",
+    "stats": {
+      "commitment": {
+        "number": "100%",
+        "label": "Commitment",
+        "description": "Total dedication to each project"
+      },
+      "availability": {
+        "number": "24/7",
+        "label": "Availability",
+        "description": "Always ready for new challenges"
+      },
+      "certifications": {
+        "number": "5+",
+        "label": "Certifications",
+        "description": "Continuous learning"
+      }
+    },
+    "achievements": {
+      "security": {
+        "title": "Security Specialization",
+        "description": "Special focus on applying security best practices in the development cycle."
+      },
+      "fullstack": {
+        "title": "Full Stack Development",
+        "description": "Experience in developing complete web applications, from frontend to backend."
+      }
+    },
+    "skills": {
+      "title": "Technical Skills",
+      "interface": {
+        "title": "Interface"
+      },
+      "tools": {
+        "title": "Tools"
+      },
+      "backend": {
+        "title": "Backend"
+      },
+      "others": {
+        "title": "Others"
+      }
+    },
+    "education": {
+      "title": "Education and Certifications",
+      "software": {
+        "title": "Software Analysis and Development (Technologist)",
+        "institution": "SENA - Popayán",
+        "duration": "August 2022 - March 2024"
+      },
+      "security": {
+        "title": "Cybersecurity Concepts Appropriation",
+        "institution": "SENA - Popayán",
+        "duration": "December 2022"
+      },
+      "iso": {
+        "title": "Introduction to Information Security Management Systems according to ISO IEC 27001",
+        "institution": "SENA - Popayán",
+        "duration": "2022"
+      },
+      "excel": {
+        "title": "Basic Management of Excel Spreadsheet Tool",
+        "institution": "SENA - Popayán",
+        "duration": "2022"
+      },
+      "ethical": {
+        "title": "Ethical Hacker",
+        "institution": "CISCO"
+      }
+    }
+  },
+  "projects": {
+    "title": "My Projects",
+    "viewCode": "View Code",
+    "information": "Information",
+    "projects": {
+      "sena360": {
+        "title": "Sena360",
+        "description": "Web survey software for SENA apprentices. Evaluates training and instructors through an intuitive and efficient system."
+      },
+      "agrovida": {
+        "title": "Agrovida",
+        "description": "Agricultural automation system 4.0 for SENA. Administrative dashboard for monitoring and control of automated crops."
+      },
+      "lotustore": {
+        "title": "LotuStore",
+        "description": "Modern e-commerce with intuitive interface. Product management, shopping cart, and checkout process. (Still in development)."
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact Me",
+    "subtitle": "Have a question or proposal? Feel free to reach out",
+    "cta": "Let's Work Together!",
+    "availability": "I'm available for freelance projects, collaborations, and job opportunities. Don't hesitate to contact me.",
+    "social": {
+      "title": "Social Media"
+    },
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "message": "Message",
+      "messagePlaceholder": "Your message here...",
+      "submit": "Send Message",
+      "sending": "Sending..."
+    },
+    "status": {
+      "sending": "Sending...",
+      "success": "Message sent successfully! I'll get back to you soon.",
+      "error": {
+        "base": "There was an error sending the message. ",
+        "template": "Error in mail service configuration. Please contact potoslipig8@gmail.com directly",
+        "generic": "Please try again later."
+      }
+    }
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "about": "Sobre mí",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Desarrollador Full Stack",
+    "subtitle": "Creando experiencias web únicas y memorables",
+    "cta": {
+      "contact": "Contáctame",
+      "projects": "Ver proyectos"
+    },
+    "tech": {
+      "title": "Tecnologías principales"
+    }
+  },
+  "about": {
+    "title": "Sobre Mí",
+    "name": "Sebastian Campo",
+    "role": "Analista y Desarrollador de Software",
+    "description1": "Apasionado por el desarrollo de software y la seguridad informática, con un enfoque en la aplicación de las mejores prácticas de seguridad en el ciclo de vida del desarrollo.",
+    "description2": "Tengo un gran interés por aprender sobre las últimas tecnologías y prácticas en estas áreas.",
+    "stats": {
+      "commitment": {
+        "number": "100%",
+        "label": "Compromiso",
+        "description": "Dedicación total a cada proyecto"
+      },
+      "availability": {
+        "number": "24/7",
+        "label": "Disponibilidad",
+        "description": "Siempre listo para nuevos desafíos"
+      },
+      "certifications": {
+        "number": "5+",
+        "label": "Certificaciones",
+        "description": "Aprendizaje continuo"
+      }
+    },
+    "achievements": {
+      "security": {
+        "title": "Especialización en Seguridad",
+        "description": "Enfoque especial en la aplicación de las mejores prácticas de seguridad en el ciclo de desarrollo."
+      },
+      "fullstack": {
+        "title": "Desarrollo Full Stack",
+        "description": "Experiencia en el desarrollo de aplicaciones web completas, desde el frontend hasta el backend."
+      }
+    },
+    "skills": {
+      "title": "Habilidades Técnicas",
+      "interface": {
+        "title": "Interfaz"
+      },
+      "tools": {
+        "title": "Herramientas"
+      },
+      "backend": {
+        "title": "Backend"
+      },
+      "others": {
+        "title": "Otros"
+      }
+    },
+    "education": {
+      "title": "Educación y Certificaciones",
+      "software": {
+        "title": "Análisis y Desarrollo de Software (Técnologo)",
+        "institution": "SENA - Popayán",
+        "duration": "Agosto 2022 - Marzo 2024"
+      },
+      "security": {
+        "title": "Apropiación de Conceptos en Ciberseguridad",
+        "institution": "SENA - Popayán",
+        "duration": "Diciembre 2022"
+      },
+      "iso": {
+        "title": "Introducción a los Sistemas de Gestión de la Seguridad de la Información según la Norma ISO IEC 27001",
+        "institution": "SENA - Popayán",
+        "duration": "2022"
+      },
+      "excel": {
+        "title": "Manejo Básico de la Herramienta de Hojas de Cálculo Excel",
+        "institution": "SENA - Popayán",
+        "duration": "2022"
+      },
+      "ethical": {
+        "title": "Ethical Hacker",
+        "institution": "CISCO"
+      }
+    }
+  },
+  "projects": {
+    "title": "Mis Proyectos",
+    "viewCode": "Ver Código",
+    "information": "Información",
+    "projects": {
+      "sena360": {
+        "title": "Sena360",
+        "description": "Software web de encuestas para aprendices del SENA. Evalúa la formación e instructores mediante un sistema intuitivo y eficiente."
+      },
+      "agrovida": {
+        "title": "Agrovida",
+        "description": "Sistema de automatización agrícola 4.0 para el SENA. Dashboard administrativo para monitoreo y control de cultivos automatizados."
+      },
+      "lotustore": {
+        "title": "LotuStore",
+        "description": "E-commerce moderno con interfaz intuitiva. Gestión de productos, carrito de compras y proceso de pago. (Aun en desarrollo)."
+      }
+    }
+  },
+  "contact": {
+    "title": "Contáctame",
+    "subtitle": "¿Tienes alguna pregunta o propuesta? No dudes en contactarme",
+    "cta": "¡Trabajemos juntos!",
+    "availability": "Estoy disponible para proyectos freelance, colaboraciones y oportunidades laborales. No dudes en contactarme.",
+    "social": {
+      "title": "Redes Sociales"
+    },
+    "form": {
+      "name": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "email": "Email",
+      "emailPlaceholder": "tu@email.com",
+      "message": "Mensaje",
+      "messagePlaceholder": "Tu mensaje aquí...",
+      "submit": "Enviar mensaje",
+      "sending": "Enviando..."
+    },
+    "status": {
+      "sending": "Enviando...",
+      "success": "¡Mensaje enviado con éxito! Me pondré en contacto contigo pronto.",
+      "error": {
+        "base": "Hubo un error al enviar el mensaje. ",
+        "template": "Error en la configuración del servicio de correo. Por favor, contacta directamente a potoslipig8@gmail.com",
+        "generic": "Por favor, intenta nuevamente más tarde."
+      }
+    }
+  }
+}

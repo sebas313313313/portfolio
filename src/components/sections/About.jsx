@@ -2,8 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { CardSpotlight } from '../ui/card-spotlight';
 import SpotlightCard from '../cards/SpotlightCard';
+import { useTranslation } from 'react-i18next';
 
 const About = () => {
+  const { t } = useTranslation();
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
@@ -42,7 +44,7 @@ const About = () => {
             transition={{ duration: 0.5 }}
             className="text-3xl font-bold text-center mb-12"
           >
-            Sobre Mí
+            {t('about.title')}
           </motion.h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Left Column - Profile */}
@@ -52,18 +54,14 @@ const About = () => {
               transition={{ duration: 0.5 }}
             >
               <SpotlightCard className="p-8" spotlightColor="rgba(139, 92, 246, 0.2)">
-                <h3 className="text-2xl font-bold mb-4">Sebastian Campo</h3>
-                <p className="text-gray-400 mb-4">Analista y Desarrollador de Software</p>
+                <h3 className="text-2xl font-bold mb-4">{t('about.name')}</h3>
+                <p className="text-gray-400 mb-4">{t('about.role')}</p>
                 <p className="text-gray-400 mb-6">
-                  Apasionado por el desarrollo de software y la seguridad informática,
-                  con un enfoque en la aplicación de las mejores prácticas de
-                  seguridad en el ciclo de vida del desarrollo.
+                  {t('about.description1')}
                 </p>
                 <p className="text-gray-400 mb-6">
-                  Tengo un gran interés por aprender sobre las últimas tecnologías y
-                  prácticas en estas áreas.
+                  {t('about.description2')}
                 </p>
-                
               </SpotlightCard>
             </motion.div>
 
@@ -78,36 +76,36 @@ const About = () => {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <StatsCard
                   icon="🎯"
-                  number="100%"
-                  label="Compromiso"
-                  description="Dedicación total a cada proyecto"
+                  number={t('about.stats.commitment.number')}
+                  label={t('about.stats.commitment.label')}
+                  description={t('about.stats.commitment.description')}
                 />
                 <StatsCard
                   icon="⚡"
-                  number="24/7"
-                  label="Disponibilidad"
-                  description="Siempre listo para nuevos desafíos"
+                  number={t('about.stats.availability.number')}
+                  label={t('about.stats.availability.label')}
+                  description={t('about.stats.availability.description')}
                 />
                 <StatsCard
                   icon="📚"
-                  number="5+"
-                  label="Certificaciones"
-                  description="Aprendizaje continuo"
+                  number={t('about.stats.certifications.number')}
+                  label={t('about.stats.certifications.label')}
+                  description={t('about.stats.certifications.description')}
                 />
               </div>
 
               {/* Achievement Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="p-6 rounded-xl bg-gradient-to-br from-purple-900/50 to-blue-900/50 backdrop-blur-sm border border-gray-800">
-                  <h4 className="text-xl font-semibold mb-2 text-purple-400">Especialización en Seguridad</h4>
+                  <h4 className="text-xl font-semibold mb-2 text-purple-400">{t('about.achievements.security.title')}</h4>
                   <p className="text-gray-400">
-                    Enfoque especial en la aplicación de las mejores prácticas de seguridad en el ciclo de desarrollo.
+                    {t('about.achievements.security.description')}
                   </p>
                 </div>
                 <div className="p-6 rounded-xl bg-gradient-to-br from-blue-900/50 to-purple-900/50 backdrop-blur-sm border border-gray-800">
-                  <h4 className="text-xl font-semibold mb-2 text-blue-400">Desarrollo Full Stack</h4>
+                  <h4 className="text-xl font-semibold mb-2 text-blue-400">{t('about.achievements.fullstack.title')}</h4>
                   <p className="text-gray-400">
-                    Experiencia en el desarrollo de aplicaciones web completas, desde el frontend hasta el backend.
+                    {t('about.achievements.fullstack.description')}
                   </p>
                 </div>
               </div>
@@ -122,10 +120,10 @@ const About = () => {
             className="mt-12"
           >
             <SpotlightCard className="p-8" spotlightColor="rgba(59, 130, 246, 0.2)">
-              <h3 className="text-2xl font-bold mb-6">Habilidades Técnicas</h3>
+              <h3 className="text-2xl font-bold mb-6">{t('about.skills.title')}</h3>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-200">Interfaz</h4>
+                  <h4 className="text-lg font-semibold text-gray-200">{t('about.skills.interface.title')}</h4>
                   <div className="mt-2 flex flex-wrap gap-2">
                     {['React.js', 'HTML5', 'CSS3', 'JavaScript'].map((tech, index) => (
                       <span
@@ -138,7 +136,7 @@ const About = () => {
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-200">Herramientas</h4>
+                  <h4 className="text-lg font-semibold text-gray-200">{t('about.skills.tools.title')}</h4>
                   <div className="mt-2 flex flex-wrap gap-2">
                     {['Git', 'VS Code', 'Postman', 'npm'].map((tech, index) => (
                       <span
@@ -151,7 +149,7 @@ const About = () => {
                   </div>
                 </div>
                 <div className="mt-4">
-                  <h4 className="text-lg font-semibold text-gray-200">Backend</h4>
+                  <h4 className="text-lg font-semibold text-gray-200">{t('about.skills.backend.title')}</h4>
                   <div className="mt-2 flex flex-wrap gap-2">
                     {['Node.js', 'Express', 'MongoDB', 'MySQL'].map((tech, index) => (
                       <span
@@ -164,7 +162,7 @@ const About = () => {
                   </div>
                 </div>
                 <div className="mt-4">
-                  <h4 className="text-lg font-semibold text-gray-200">Otros</h4>
+                  <h4 className="text-lg font-semibold text-gray-200">{t('about.skills.others.title')}</h4>
                   <div className="mt-2 flex flex-wrap gap-2">
                     {['API RESTful', 'Python', 'Java', 'C++'].map((tech, index) => (
                       <span
@@ -188,31 +186,31 @@ const About = () => {
             className="mt-12"
           >
             <SpotlightCard className="p-8" spotlightColor="rgba(236, 72, 153, 0.2)">
-              <h3 className="text-2xl font-bold mb-6">Educación y Certificaciones</h3>
+              <h3 className="text-2xl font-bold mb-6">{t('about.education.title')}</h3>
               <div className="space-y-4 max-h-[400px] overflow-y-auto pr-4 custom-scrollbar">
                 <div className="border-l-2 border-pink-500/20 pl-4 hover:border-pink-500/40 transition-colors">
-                  <h4 className="text-lg font-semibold text-gray-200">Análisis y Desarrollo de Software (Técnologo)</h4>
-                  <p className="text-gray-400">SENA - Popayán</p>
-                  <p className="text-sm text-gray-500">Agosto 2022 - Marzo 2024</p>
+                  <h4 className="text-lg font-semibold text-gray-200">{t('about.education.software.title')}</h4>
+                  <p className="text-gray-400">{t('about.education.software.institution')}</p>
+                  <p className="text-sm text-gray-500">{t('about.education.software.duration')}</p>
                 </div>
                 <div className="border-l-2 border-pink-500/20 pl-4 hover:border-pink-500/40 transition-colors">
-                  <h4 className="text-lg font-semibold text-gray-200">Apropiación de Conceptos en Ciberseguridad</h4>
-                  <p className="text-gray-400">SENA - Popayán</p>
-                  <p className="text-sm text-gray-500">Diciembre 2022</p>
+                  <h4 className="text-lg font-semibold text-gray-200">{t('about.education.security.title')}</h4>
+                  <p className="text-gray-400">{t('about.education.security.institution')}</p>
+                  <p className="text-sm text-gray-500">{t('about.education.security.duration')}</p>
                 </div>
                 <div className="border-l-2 border-pink-500/20 pl-4 hover:border-pink-500/40 transition-colors">
-                  <h4 className="text-lg font-semibold text-gray-200">Introducción a los Sistemas de Gestión de la Seguridad de la Información según la Norma ISO IEC 27001</h4>
-                  <p className="text-gray-400">SENA - Popayán</p>
-                  <p className="text-sm text-gray-500">2022</p>
+                  <h4 className="text-lg font-semibold text-gray-200">{t('about.education.iso.title')}</h4>
+                  <p className="text-gray-400">{t('about.education.iso.institution')}</p>
+                  <p className="text-sm text-gray-500">{t('about.education.iso.duration')}</p>
                 </div>
                 <div className="border-l-2 border-pink-500/20 pl-4 hover:border-pink-500/40 transition-colors">
-                  <h4 className="text-lg font-semibold text-gray-200">Manejo Básico de la Herramienta de Hojas de Cálculo Excel</h4>
-                  <p className="text-gray-400">SENA - Popayán</p>
-                  <p className="text-sm text-gray-500">2022</p>
+                  <h4 className="text-lg font-semibold text-gray-200">{t('about.education.excel.title')}</h4>
+                  <p className="text-gray-400">{t('about.education.excel.institution')}</p>
+                  <p className="text-sm text-gray-500">{t('about.education.excel.duration')}</p>
                 </div>
                 <div className="border-l-2 border-pink-500/20 pl-4 hover:border-pink-500/40 transition-colors">
-                  <h4 className="text-lg font-semibold text-gray-200">Ethical Hacker</h4>
-                  <p className="text-gray-400">CISCO</p>
+                  <h4 className="text-lg font-semibold text-gray-200">{t('about.education.ethical.title')}</h4>
+                  <p className="text-gray-400">{t('about.education.ethical.institution')}</p>
                 </div>
               </div>
             </SpotlightCard>

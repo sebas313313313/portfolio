@@ -4,12 +4,14 @@ import SpotlightCard from '../cards/SpotlightCard';
 import { SplitText } from '../animations/SplitText';
 import emailjs from '@emailjs/browser';
 import { EnvelopeIcon, GitHubIcon, LinkedInIcon, PhoneIcon, InstagramIcon } from "../ui/Icons";
+import { useTranslation } from 'react-i18next';
 
 const SERVICE_ID = 'service_xdi9sf5';
 const TEMPLATE_ID = 'template_kg5lr0p';
 const PUBLIC_KEY = 'bX36MolOlDhV6QsdG';
 
 const Contact = () => {
+  const { t } = useTranslation();
   const form = useRef();
   const [status, setStatus] = useState(null);
 
@@ -17,7 +19,7 @@ const Contact = () => {
     e.preventDefault();
     
     try {
-      setStatus({ type: 'loading', message: 'Enviando...' });
+      setStatus({ type: 'loading', message: t('contact.status.sending') });
 
       const formData = new FormData(form.current);
       const templateParams = {};
@@ -35,7 +37,7 @@ const Contact = () => {
       if (result.text === 'OK') {
         setStatus({
           type: 'success',
-          message: '¡Mensaje enviado con éxito! Me pondré en contacto contigo pronto.'
+          message: t('contact.status.success')
         });
         form.current.reset();
       } else {
@@ -44,11 +46,11 @@ const Contact = () => {
     } catch (error) {
       console.error('Error detallado:', error);
       
-      let errorMessage = 'Hubo un error al enviar el mensaje. ';
+      let errorMessage = t('contact.status.error.base');
       if (error.text && error.text.includes('template ID not found')) {
-        errorMessage += 'Error en la configuración del servicio de correo. Por favor, contacta directamente a potoslipig8@gmail.com';
+        errorMessage += t('contact.status.error.template');
       } else {
-        errorMessage += 'Por favor, intenta nuevamente más tarde.';
+        errorMessage += t('contact.status.error.generic');
       }
 
       setStatus({
@@ -76,10 +78,10 @@ const Contact = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            <SplitText text="Contáctame" />
+            <SplitText text={t('contact.title')} />
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            ¿Tienes alguna pregunta o propuesta? No dudes en contactarme
+            {t('contact.subtitle')}
           </p>
         </div>
 
@@ -88,11 +90,10 @@ const Contact = () => {
           <div className="space-y-8">
             <div>
               <h3 className="text-2xl font-bold text-white mb-4">
-                ¡Trabajemos juntos!
+                {t('contact.cta')}
               </h3>
               <p className="text-gray-400 mb-6">
-                Estoy disponible para proyectos freelance, colaboraciones y
-                oportunidades laborales. No dudes en contactarme.
+                {t('contact.availability')}
               </p>
 
               <div className="space-y-3">
@@ -104,110 +105,112 @@ const Contact = () => {
                   <span>potoslipig8@gmail.com</span>
                 </button>
 
-                <button 
-                  onClick={handlePhoneClick}
+                <button
+                  onClick={handlePhoneClick} 
                   className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors cursor-pointer"
                 >
                   <PhoneIcon className="w-5 h-5" />
                   <span>+57 304 286 2082</span>
                 </button>
               </div>
+            </div>
 
-              <div className="mt-6 flex gap-4">
-                <button 
+            <div>
+              <h4 className="text-xl font-semibold text-white mb-4">
+                {t('contact.social.title')}
+              </h4>
+              <div className="flex gap-4">
+                <button
                   onClick={() => handleSocialClick('https://github.com/sebas313313313')}
-                  className="p-2 text-gray-300 hover:text-blue-400 transition-colors cursor-pointer"
+                  className="text-gray-400 hover:text-white transition-colors"
+                  title="GitHub"
                 >
                   <GitHubIcon className="w-6 h-6" />
                 </button>
-
-                <button 
-                  onClick={() => handleSocialClick('https://www.instagram.com/ww.sebass/')}
-                  className="p-2 text-gray-300 hover:text-blue-400 transition-colors cursor-pointer"
-                >
-                  <InstagramIcon className="w-6 h-6" />
-                </button>
-
-                <button 
-                  onClick={() => handleSocialClick('https://www.linkedin.com/in/sebastian-campo-069356303')}
-                  className="p-2 text-gray-300 hover:text-blue-400 transition-colors cursor-pointer"
+                <button
+                  onClick={() => handleSocialClick('https://www.linkedin.com/in/sebastian-campo-potosi-a3a6b9267/')}
+                  className="text-gray-400 hover:text-white transition-colors"
+                  title="LinkedIn"
                 >
                   <LinkedInIcon className="w-6 h-6" />
+                </button>
+                <button
+                  onClick={() => handleSocialClick('https://www.instagram.com/sebas_campo_/')}
+                  className="text-gray-400 hover:text-white transition-colors"
+                  title="Instagram"
+                >
+                  <InstagramIcon className="w-6 h-6" />
                 </button>
               </div>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="bg-gray-900/50 p-8 rounded-2xl backdrop-blur-sm">
+          <SpotlightCard className="p-8" spotlightColor="rgba(59, 130, 246, 0.2)">
             <form ref={form} onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="from_name" className="block text-sm font-medium text-gray-300 mb-2">
-                  Nombre
+                <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                  {t('contact.form.name')}
                 </label>
                 <input
                   type="text"
-                  name="from_name"
-                  id="from_name"
-                  className="w-full px-4 py-2 rounded-lg bg-black/50 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  id="name"
+                  name="name"
                   required
+                  className="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  placeholder={t('contact.form.namePlaceholder')}
                 />
               </div>
               <div>
-                <label htmlFor="from_email" className="block text-sm font-medium text-gray-300 mb-2">
-                  Email
+                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                  {t('contact.form.email')}
                 </label>
                 <input
                   type="email"
-                  name="from_email"
-                  id="from_email"
-                  className="w-full px-4 py-2 rounded-lg bg-black/50 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  id="email"
+                  name="email"
                   required
+                  className="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  placeholder={t('contact.form.emailPlaceholder')}
                 />
               </div>
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                  Mensaje
+                  {t('contact.form.message')}
                 </label>
                 <textarea
-                  name="message"
                   id="message"
-                  rows="4"
-                  className="w-full px-4 py-2 rounded-lg bg-black/50 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none"
+                  name="message"
                   required
+                  rows={4}
+                  className="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
+                  placeholder={t('contact.form.messagePlaceholder')}
                 />
-              </div>
-              
-              <input type="hidden" name="to_name" value="Sebastian" />
-              <input type="hidden" name="to_email" value="potoslipig8@gmail.com" />
-              
-              <div>
-                <motion.button
-                  type="submit"
-                  className="w-full py-3 px-4 bg-gradient-to-r from-purple-600 to-blue-500 text-white font-medium rounded-lg hover:from-purple-700 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-900 disabled:opacity-50 transition-all duration-200"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  disabled={status?.type === 'loading'}
-                >
-                  {status?.type === 'loading' ? 'Enviando...' : 'Enviar mensaje'}
-                </motion.button>
               </div>
 
               {status && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className={`p-4 rounded-lg text-center ${
-                    status.type === 'success' ? 'bg-green-500/20 text-green-400' : 
-                    status.type === 'error' ? 'bg-red-500/20 text-red-400' : 
-                    'bg-gray-500/20 text-gray-400'
+                <div
+                  className={`p-4 rounded-lg ${
+                    status.type === 'success'
+                      ? 'bg-green-900/50 text-green-300'
+                      : status.type === 'error'
+                      ? 'bg-red-900/50 text-red-300'
+                      : 'bg-blue-900/50 text-blue-300'
                   }`}
                 >
                   {status.message}
-                </motion.div>
+                </div>
               )}
+
+              <button
+                type="submit"
+                disabled={status?.type === 'loading'}
+                className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium hover:from-blue-700 hover:to-purple-700 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {status?.type === 'loading' ? t('contact.form.sending') : t('contact.form.submit')}
+              </button>
             </form>
-          </div>
+          </SpotlightCard>
         </div>
       </div>
     </section>

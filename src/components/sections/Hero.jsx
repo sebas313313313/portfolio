@@ -1,7 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
+  const { t } = useTranslation();
+  
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black">
       {/* Gradient Background */}
@@ -26,7 +29,7 @@ const Hero = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500"
               >
-                Desarrollador Full Stack
+                {t('hero.title')}
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -34,7 +37,7 @@ const Hero = () => {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="text-xl text-gray-400"
               >
-                Creando experiencias web únicas y memorables
+                {t('hero.subtitle')}
               </motion.p>
             </div>
 
@@ -48,13 +51,13 @@ const Hero = () => {
                 href="#contact"
                 className="px-8 py-3 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-200"
               >
-                Contáctame
+                {t('hero.cta.contact')}
               </a>
               <a
                 href="#projects"
                 className="px-8 py-3 rounded-full border border-gray-700 text-gray-300 font-medium hover:bg-gray-800 transition-all duration-200 flex items-center gap-2"
               >
-                Ver proyectos
+                {t('hero.cta.projects')}
                 <svg
                   className="w-4 h-4"
                   fill="none"
@@ -78,7 +81,7 @@ const Hero = () => {
               transition={{ duration: 0.5, delay: 0.5 }}
               className="pt-8 border-t border-gray-800"
             >
-              <p className="text-sm text-gray-500 mb-4">Tecnologías principales</p>
+              <p className="text-sm text-gray-500 mb-4">{t('hero.tech.title')}</p>
               <div className="flex flex-wrap gap-3">
                 {['React', 'Node.js', 'MongoDB', 'Express', 'JavaScript', "php", "laravel"].map((tech, index) => (
                   <span
