@@ -1,27 +1,27 @@
 {
   "nav": {
     "home": "Inicio",
-    "projects": "Proyectos",
     "about": "Sobre mí",
+    "projects": "Proyectos",
     "contact": "Contacto"
   },
   "hero": {
     "title": "Desarrollador Full Stack",
-    "subtitle": "Creando experiencias web únicas y memorables",
+    "subtitle": "Creando soluciones digitales innovadoras",
     "cta": {
       "contact": "Contáctame",
-      "projects": "Ver proyectos"
+      "projects": "Ver Proyectos"
     },
     "tech": {
-      "title": "Tecnologías principales"
+      "title": "Tecnologías"
     }
   },
   "about": {
     "title": "Sobre Mí",
     "name": "Sebastian Campo",
-    "role": "Analista y Desarrollador de Software",
-    "description1": "Apasionado por el desarrollo de software y la seguridad informática, con un enfoque en la aplicación de las mejores prácticas de seguridad en el ciclo de vida del desarrollo.",
-    "description2": "Tengo un gran interés por aprender sobre las últimas tecnologías y prácticas en estas áreas.",
+    "role": "Desarrollador Full Stack & Analista de Seguridad",
+    "description1": "Soy un desarrollador full stack apasionado por crear soluciones digitales innovadoras. Me especializo en el desarrollo web y la seguridad informática.",
+    "description2": "Mi enfoque se centra en construir aplicaciones web seguras y escalables, combinando las mejores prácticas de desarrollo con principios sólidos de seguridad.",
     "stats": {
       "commitment": {
         "number": "100%",
@@ -36,74 +36,74 @@
       "certifications": {
         "number": "5+",
         "label": "Certificaciones",
-        "description": "Aprendizaje continuo"
+        "description": "Formación continua y actualizada"
       }
     },
     "achievements": {
       "security": {
-        "title": "Especialización en Seguridad",
-        "description": "Enfoque especial en la aplicación de las mejores prácticas de seguridad en el ciclo de desarrollo."
+        "title": "Analista de Seguridad",
+        "description": "Especializado en pruebas de penetración y seguridad web"
       },
       "fullstack": {
-        "title": "Desarrollo Full Stack",
-        "description": "Experiencia en el desarrollo de aplicaciones web completas, desde el frontend hasta el backend."
+        "title": "Desarrollador Full Stack",
+        "description": "Experto en desarrollo web con tecnologías modernas"
       }
     },
     "skills": {
-      "title": "Habilidades Técnicas",
+      "title": "Habilidades",
       "interface": {
-        "title": "Interfaz"
+        "title": " Desarrollo Frontend"
       },
       "tools": {
-        "title": "Herramientas"
+        "title": " Herramientas"
       },
       "backend": {
-        "title": "Backend"
+        "title": " Desarrollo Backend"
       },
       "others": {
-        "title": "Otros"
+        "title": " Otras Tecnologías"
       }
     },
     "education": {
-      "title": "Educación y Certificaciones",
+      "title": "Educación",
       "software": {
-        "title": "Análisis y Desarrollo de Software (Técnologo)",
-        "institution": "SENA - Popayán",
-        "duration": "Agosto 2022 - Marzo 2024"
+        "title": "Análisis y Desarrollo de Software",
+        "institution": "SENA",
+        "duration": "2022 - 2024"
       },
       "security": {
-        "title": "Apropiación de Conceptos en Ciberseguridad",
-        "institution": "SENA - Popayán",
-        "duration": "Diciembre 2022"
+        "title": "Seguridad Informática",
+        "institution": "SENA",
+        "duration": "2023 - 2024"
       },
       "iso": {
-        "title": "Introducción a los Sistemas de Gestión de la Seguridad de la Información según la Norma ISO IEC 27001",
-        "institution": "SENA - Popayán",
-        "duration": "2022"
+        "title": "ISO 27001 Fundamentos",
+        "institution": "SENA",
+        "duration": "2023"
       },
       "excel": {
-        "title": "Manejo Básico de la Herramienta de Hojas de Cálculo Excel",
-        "institution": "SENA - Popayán",
-        "duration": "2022"
+        "title": "Excel Avanzado",
+        "institution": "SENA",
+        "duration": "2023"
       },
       "ethical": {
-        "title": "Ethical Hacker",
-        "institution": "CISCO"
+        "title": "Ethical Hacking",
+        "institution": "SENA"
       }
     }
   },
   "projects": {
-    "title": "Mis Proyectos",
+    "title": "Proyectos",
     "viewCode": "Ver Código",
-    "information": "Información",
+    "information": "Más Información",
     "projects": {
       "sena360": {
-        "title": "Sena360",
-        "description": "Software web de encuestas para aprendices del SENA. Evalúa la formación e instructores mediante un sistema intuitivo y eficiente."
+        "title": "SENA 360°",
+        "description": "Plataforma educativa integral para el SENA. Sistema de gestión de aprendizaje con funcionalidades avanzadas para estudiantes y profesores."
       },
       "agrovida": {
-        "title": "Agrovida",
-        "description": "Sistema de automatización agrícola 4.0 para el SENA. Dashboard administrativo para monitoreo y control de cultivos automatizados."
+        "title": "AgroVida",
+        "description": "Sistema de gestión agrícola para pequeños agricultores. Control de cultivos, inventario y ventas."
       },
       "lotustore": {
         "title": "LotuStore",
