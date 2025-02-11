@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { CardSpotlight } from '../ui/card-spotlight';
 import SpotlightCard from '../cards/SpotlightCard';
 import { useTranslation } from 'react-i18next';
+import Badges from './Badges';
 
 const About = () => {
   const { t } = useTranslation();
@@ -176,6 +177,16 @@ const About = () => {
                 </div>
               </div>
             </SpotlightCard>
+          </motion.div>
+
+          {/* Badges */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-12"
+          >
+            <Badges />
           </motion.div>
 
           {/* Additional Info */}
